@@ -12,7 +12,7 @@
   <body>
 
     <div id="editor">
-      <textarea :value="input" @input="update"></textarea>
+      <textarea :value="input" v-on:input="update"></textarea>
       <div v-html="compiledMarkdown"></div>
     </div>
 
@@ -24,7 +24,7 @@
         },
         computed: {
           compiledMarkdown: function () {
-            return marked(this.input, { sanitize: true })
+            return marked(this.input, { sanitize: true }) // mark转码包文件npm pkg，忽略任何已经被输入的任何html
           }
         },
         methods: {
